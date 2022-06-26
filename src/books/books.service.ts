@@ -9,6 +9,30 @@ export class BooksService {
     getAllbooks(): any[] {
     return this.books
     }
+    getBook(id: string){
+        const bookIdx = this.findBooksById(id)
+        return this.books[bookIdx];
+    }
+
+    //jangan dihapus
+
+//     filterBook(title:string,author:string,category:string): any[] {
+//     const books = this.books.filter((book)=>{
+//         let isMatch = true
+//         if(title && book.title != title){
+//             isMatch = false
+//         }
+//         if(author && book.author != author){
+//             isMatch = false
+//         }
+//         if(category && book.category != category){
+//             isMatch = false
+//         }
+//         return isMatch
+//     });
+//     return books
+// }
+
 
     createBooks(title:string,author:string,category:string){
         this.books.push({
@@ -33,4 +57,10 @@ export class BooksService {
             return bookIdx
         
     }
+    deleteBook(id: string){
+        const bookIdx = this.findBooksById(id)
+        return this.books.splice(bookIdx,1)
+    }
+
+
 }
